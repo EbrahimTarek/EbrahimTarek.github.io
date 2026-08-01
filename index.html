@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebrahim Tarek | Senior BI Engineer & SAP BI Consultant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy:       #1E3A5F;
+            --blue:       #2563EB;
+            --blue-light: #EFF6FF;
+            --text-p:     #111827;
+            --text-s:     #6B7280;
+            --bg:         #F9FAFB;
+            --white:      #FFFFFF;
+            --border:     #E5E7EB;
+            --sh-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+            --sh-md: 0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.05);
+            --sh-lg: 0 10px 20px rgba(0,0,0,.08), 0 4px 8px rgba(0,0,0,.05);
+            --radius: 14px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-p);
+            line-height: 1.6;
+        }
+
+        /* ── NAV ─────────────────────────────────── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 200;
+            height: 64px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 2.5rem;
+        }
+        .nav-logo {
+            font-weight: 700; font-size: 1.1rem;
+            color: var(--navy); text-decoration: none;
+            letter-spacing: .5px;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-s);
+            font-size: .875rem; font-weight: 500;
+            transition: color .2s;
+        }
+        .nav-links a:hover { color: var(--blue); }
+
+        /* ── LAYOUT ──────────────────────────────── */
+        section { padding: 90px 0; }
+        .container { max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
+
+        .section-title {
+            font-size: 1.75rem; font-weight: 700;
+            color: var(--navy); margin-bottom: .4rem;
+        }
+        .section-line {
+            width: 44px; height: 3px; border-radius: 2px;
+            background: var(--blue); margin-bottom: 3rem;
+        }
+
+        /* ── HERO ────────────────────────────────── */
+        #hero {
+            padding-top: 128px; padding-bottom: 90px;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+        .hero-inner {
+            display: flex; align-items: center;
+            gap: 4rem; flex-wrap: wrap;
+        }
+        .hero-photo {
+            width: 165px; height: 165px;
+            border-radius: 50%;
+            object-fit: cover; object-position: center top;
+            border: 4px solid var(--blue);
+            box-shadow: var(--sh-md);
+            flex-shrink: 0;
+        }
+        .hero-text h1 {
+            font-size: 2.2rem; font-weight: 700;
+            color: var(--navy); line-height: 1.2;
+        }
+        .hero-title {
+            font-size: 1.05rem; color: var(--blue);
+            font-weight: 500; margin: .5rem 0 1rem;
+        }
+        .hero-bio {
+            color: var(--text-s); font-size: .95rem;
+            line-height: 1.75; max-width: 580px;
+        }
+        .hero-cta {
+            display: flex; gap: 1rem; margin-top: 1.75rem; flex-wrap: wrap;
+        }
+        .btn {
+            padding: .65rem 1.4rem; border-radius: 8px;
+            font-weight: 500; font-size: .875rem;
+            text-decoration: none; transition: all .2s;
+            display: inline-flex; align-items: center; gap: .4rem;
+            cursor: pointer; border: none;
+        }
+        .btn-primary { background: var(--blue); color: #fff; }
+        .btn-primary:hover { background: #1D4ED8; transform: translateY(-1px); }
+        .btn-outline {
+            border: 1.5px solid var(--border);
+            color: var(--text-p); background: transparent;
+        }
+        .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+        /* ── SKILLS ──────────────────────────────── */
+        #skills { background: var(--bg); }
+        .skills-grid { display: flex; flex-wrap: wrap; gap: .75rem; }
+        .skill-tag {
+            background: var(--white); border: 1.5px solid var(--border);
+            padding: .5rem 1.2rem; border-radius: 100px;
+            font-size: .875rem; font-weight: 500; color: var(--text-p);
+            transition: all .2s; user-select: none;
+        }
+        .skill-tag:hover {
+            border-color: var(--blue); color: var(--blue);
+            background: var(--blue-light);
+        }
+
+        /* ── EXPERIENCE ──────────────────────────── */
+        #experience { background: var(--white); }
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before {
+            content: ''; position: absolute;
+            left: 7px; top: 6px; bottom: 6px;
+            width: 2px; background: var(--border);
+        }
+        .timeline-item { position: relative; margin-bottom: 2.75rem; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -2rem; top: 7px;
+            width: 14px; height: 14px; border-radius: 50%;
+            background: var(--blue);
+            border: 2.5px solid var(--white);
+            box-shadow: 0 0 0 2px var(--blue);
+        }
+        .tl-header {
+            display: flex; justify-content: space-between;
+            align-items: flex-start; flex-wrap: wrap; gap: .5rem;
+            margin-bottom: .6rem;
+        }
+        .job-title { font-size: 1rem; font-weight: 600; color: var(--navy); }
+        .job-company { font-size: .85rem; color: var(--blue); font-weight: 500; margin-top: 2px; }
+        .job-date {
+            font-size: .78rem; color: var(--text-s); white-space: nowrap;
+            background: var(--bg); padding: .25rem .8rem;
+            border-radius: 100px; border: 1px solid var(--border);
+        }
+        .job-desc { margin-top: .6rem; padding-left: 1.1rem; list-style: disc; }
+        .job-desc li {
+            font-size: .875rem; color: var(--text-s);
+            margin-bottom: .4rem; line-height: 1.65;
+        }
+
+        /* ── PROJECTS ────────────────────────────── */
+        #projects { background: var(--bg); }
+        .projects-grid { display: grid; gap: 2rem; }
+
+        .project-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            box-shadow: var(--sh-sm);
+            transition: box-shadow .25s, transform .25s;
+        }
+        .project-card:hover {
+            box-shadow: var(--sh-lg);
+            transform: translateY(-3px);
+        }
+
+        /* 2-col layout for projects 1 & 2 */
+        .project-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .project-info {
+            padding: 2.25rem 2rem;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .project-title {
+            font-size: 1.05rem; font-weight: 700;
+            color: var(--navy); margin-bottom: .75rem;
+        }
+        .project-desc {
+            font-size: .875rem; color: var(--text-s);
+            line-height: 1.75; margin-bottom: 1.1rem;
+        }
+        .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+        .project-tag {
+            background: var(--blue-light); color: var(--blue);
+            font-size: .75rem; font-weight: 500;
+            padding: .25rem .7rem; border-radius: 100px;
+        }
+
+        /* ── CAROUSEL ────────────────────────────── */
+        .carousel-wrap {
+            position: relative; overflow: hidden;
+            background: #f1f5f9; aspect-ratio: 4/3;
+        }
+        .carousel-track {
+            display: flex; height: 100%;
+            transition: transform .4s ease;
+        }
+        .carousel-slide { min-width: 100%; height: 100%; overflow: hidden; }
+        .carousel-slide img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center top;
+            transition: transform .35s ease; cursor: zoom-in;
+        }
+        .carousel-slide img:hover { transform: scale(1.06); }
+        .car-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,.92); border: none;
+            width: 34px; height: 34px; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            box-shadow: var(--sh-md); z-index: 10;
+            font-size: .9rem; transition: background .2s;
+        }
+        .car-btn:hover { background: #fff; }
+        .car-btn.prev { left: 10px; }
+        .car-btn.next { right: 10px; }
+        .car-dots {
+            position: absolute; bottom: 10px; left: 50%;
+            transform: translateX(-50%);
+            display: flex; gap: 6px; z-index: 10;
+        }
+        .car-dot {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: rgba(255,255,255,.55); cursor: pointer;
+            transition: background .2s; border: none;
+        }
+        .car-dot.active { background: #fff; }
+
+        /* ── SABIC PROJECT ───────────────────────── */
+        .project-sabic-body {
+            display: flex; flex-direction: column;
+        }
+        .project-sabic-body .project-info {
+            border-bottom: 1px solid var(--border);
+        }
+        .sabic-thumbs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .sabic-thumb {
+            position: relative; overflow: hidden;
+            aspect-ratio: 16/9;
+            border-right: 1px solid var(--border);
+            display: block; text-decoration: none;
+        }
+        .sabic-thumb:last-child { border-right: none; }
+        .sabic-thumb img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center top;
+            transition: transform .35s ease;
+        }
+        .sabic-thumb:hover img { transform: scale(1.06); }
+        .sabic-overlay {
+            position: absolute; inset: 0;
+            background: rgba(20, 40, 80, 0);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            transition: background .3s; padding: .5rem;
+            text-align: center;
+        }
+        .sabic-thumb:hover .sabic-overlay { background: rgba(20, 40, 80, .78); }
+        .sabic-icon, .sabic-label {
+            color: #fff; opacity: 0;
+            transition: opacity .3s, transform .3s;
+            transform: translateY(6px);
+        }
+        .sabic-icon { font-size: 1.6rem; margin-bottom: .35rem; }
+        .sabic-label {
+            font-size: .7rem; font-weight: 600;
+            line-height: 1.3;
+        }
+        .sabic-thumb:hover .sabic-icon,
+        .sabic-thumb:hover .sabic-label {
+            opacity: 1; transform: translateY(0);
+        }
+
+        /* ── EDUCATION ───────────────────────────── */
+        #education { background: var(--white); }
+        .edu-card {
+            display: flex; align-items: center; gap: 1.5rem;
+            background: var(--bg); padding: 1.6rem 2rem;
+            border-radius: var(--radius); border: 1px solid var(--border);
+            max-width: 520px;
+        }
+        .edu-icon {
+            width: 50px; height: 50px; flex-shrink: 0;
+            background: var(--blue-light); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem;
+        }
+        .edu-degree { font-weight: 600; font-size: 1rem; color: var(--navy); }
+        .edu-sub { font-size: .875rem; color: var(--text-s); margin-top: .2rem; }
+
+        /* ── CONTACT ─────────────────────────────── */
+        #contact { background: var(--navy); }
+        #contact .section-title { color: #fff; }
+        #contact .section-line { background: rgba(255,255,255,.35); }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+        .contact-card {
+            background: rgba(255,255,255,.08);
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            display: flex; align-items: center; gap: 1rem;
+            text-decoration: none; color: #fff;
+            transition: background .2s, transform .2s;
+        }
+        .contact-card:hover {
+            background: rgba(255,255,255,.16);
+            transform: translateY(-2px);
+        }
+        .contact-ic { font-size: 1.3rem; flex-shrink: 0; }
+        .contact-lbl { font-size: .73rem; opacity: .55; display: block; }
+        .contact-val { font-size: .875rem; font-weight: 500; }
+
+        /* ── FOOTER ──────────────────────────────── */
+        footer {
+            background: #0F2440; text-align: center;
+            padding: 1.5rem; color: rgba(255,255,255,.35);
+            font-size: .8rem;
+        }
+
+        /* ── RESPONSIVE ──────────────────────────── */
+        @media (max-width: 780px) {
+            .hero-inner { flex-direction: column; text-align: center; gap: 1.75rem; }
+            .hero-cta { justify-content: center; }
+            .hero-bio { margin: 0 auto; }
+            .nav-links { display: none; }
+            .project-split { grid-template-columns: 1fr; }
+            .sabic-thumbs { grid-template-columns: 1fr; }
+            .sabic-thumb { border-right: none; border-bottom: 1px solid var(--border); aspect-ratio: 16/7; }
+            .sabic-thumb:last-child { border-bottom: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── NAV ──────────────────────────────────────────────── -->
+<nav>
+    <a href="#hero" class="nav-logo">ET</a>
+    <ul class="nav-links">
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- ─── HERO ──────────────────────────────────────────────── -->
+<section id="hero">
+    <div class="container">
+        <div class="hero-inner">
+            <img src="Ebrahim.jfif" alt="Ebrahim Tarek Ebrahim" class="hero-photo">
+            <div class="hero-text">
+                <h1>Ebrahim Tarek Ebrahim</h1>
+                <p class="hero-title">Senior BI Engineer &nbsp;/&nbsp; SAP BI Consultant</p>
+                <p class="hero-bio">Senior BI Engineer and SAP BI Consultant with 4+ years of hands-on experience in business intelligence, data warehousing, and analytics. I've delivered large-scale reporting and data solutions across banking, manufacturing, and public sector industries — from building end-to-end ETL pipelines to designing insightful dashboards. Passionate about turning complex data into clear, actionable insights that drive business decisions.</p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── SKILLS ─────────────────────────────────────────────── -->
+<section id="skills">
+    <div class="container">
+        <h2 class="section-title">Skills &amp; Technologies</h2>
+        <div class="section-line"></div>
+        <div class="skills-grid">
+            <span class="skill-tag">SAP BW</span>
+            <span class="skill-tag">SAP BusinessObjects (BO)</span>
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SSRS</span>
+            <span class="skill-tag">PySpark</span>
+            <span class="skill-tag">Informatica</span>
+            <span class="skill-tag">Excel</span>
+            <span class="skill-tag">SAP Analytics Cloud</span>
+            <span class="skill-tag">SAP HANA</span>
+            <span class="skill-tag">SSMS</span>
+            <span class="skill-tag">Hive</span>
+        </div>
+    </div>
+</section>
+
+<!-- ─── EXPERIENCE ────────────────────────────────────────── -->
+<section id="experience">
+    <div class="container">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="section-line"></div>
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="tl-header">
+                    <div>
+                        <div class="job-title">Senior BI &amp; Data Warehouse Engineer</div>
+                        <div class="job-company">SABIC &mdash; Saudi Arabia, Remote</div>
+                    </div>
+                    <span class="job-date">Jan 2026 &ndash; Present</span>
+                </div>
+                <ul class="job-desc">
+                    <li>Contributed to the design and development of an enterprise Data Warehouse on SAP HANA, focusing on data modeling and query performance optimization.</li>
+                    <li>Designed and developed interactive dashboards in SAP Analytics Cloud (SAC) &amp; Power BI for business and executive stakeholders.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="tl-header">
+                    <div>
+                        <div class="job-title">Senior BI Engineer</div>
+                        <div class="job-company">Emirates NBD Bank &mdash; Egypt, Full-Time</div>
+                    </div>
+                    <span class="job-date">Nov 2023 &ndash; Present</span>
+                </div>
+                <ul class="job-desc">
+                    <li>Developed and maintained SSRS reports and Power BI dashboards for Emirates NBD's Saudi banking entity by working closely with business stakeholders and delivering solutions that support management decisions.</li>
+                    <li>Successfully migrated more than 1,000 legacy IBM Cognos reports to SSRS, reducing reporting redundancy by 25% and simplifying the reporting environment.</li>
+                    <li>Delivered 40+ reporting solutions for the KSA entity, including 20+ regulatory reports for the Saudi Central Bank (SAMA), ensuring accurate data and compliance.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="tl-header">
+                    <div>
+                        <div class="job-title">SAP BI Consultant</div>
+                        <div class="job-company">Intercom Enterprise &mdash; Egypt, Full-Time</div>
+                    </div>
+                    <span class="job-date">Jan 2023 &ndash; Nov 2023</span>
+                </div>
+                <ul class="job-desc">
+                    <li>Designed and developed interactive reports and dashboards using SAP BO Web Intelligence (WebI) for multiple business departments, enabling KPI tracking and operational reporting.</li>
+                    <li>Delivered an executive-level SAP BusinessObjects dashboard for the Attorney General's Office, receiving direct recognition from senior leadership for addressing critical business requirements.</li>
+                    <li>Built cross-functional SAP Analytics Cloud reports integrating FI, MM, and HR modules.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="tl-header">
+                    <div>
+                        <div class="job-title">Technical Support Engineer</div>
+                        <div class="job-company">Arab Sea Information System &mdash; Saudi Arabia, Remote</div>
+                    </div>
+                    <span class="job-date">Jan 2022 &ndash; Dec 2022</span>
+                </div>
+                <ul class="job-desc">
+                    <li>Provided end-to-end support for SMACC ERP software installation, configuration, upgrades, and data migration — minimizing client downtime.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ─── PROJECTS ──────────────────────────────────────────── -->
+<section id="projects">
+    <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="section-line"></div>
+        <div class="projects-grid">
+
+            <!-- PROJECT 1 : COGNOS MIGRATION -->
+            <div class="project-card">
+                <div class="project-split">
+                    <div class="project-info">
+                        <div class="project-title">IBM Cognos to SSRS Reports Migration</div>
+                        <p class="project-desc">Contributed to the analysis of 1,000+ legacy IBM Cognos reports as part of a team effort, understanding the business logic and data structure behind each report, then re-built them in SSRS by writing optimized SQL queries and redesigning the report layouts. Each migrated report was validated by end users to ensure the output matched the original Cognos results before sign-off, reducing reporting redundancy by 25% and simplifying the overall reporting environment.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">SSRS</span>
+                            <span class="project-tag">SQL</span>
+                            <span class="project-tag">IBM Cognos</span>
+                            <span class="project-tag">SSMS</span>
+                        </div>
+                    </div>
+                    <div class="carousel-wrap" id="c1">
+                        <div class="carousel-track">
+                            <div class="carousel-slide"><img src="Migration_Project/Screenshot 2026-07-31 152215.png" alt="Income Statement Report"></div>
+                            <div class="carousel-slide"><img src="Migration_Project/Screenshot 2026-07-31 151819.png" alt="OVD Transaction Report"></div>
+                            <div class="carousel-slide"><img src="Migration_Project/Screenshot 2026-07-31 151625.png" alt="YTD GLIFF Report"></div>
+                            <div class="carousel-slide"><img src="Migration_Project/Screenshot 2026-07-31 152141.png" alt="Interest Paid Report"></div>
+                            <div class="carousel-slide"><img src="Migration_Project/Screenshot 2026-07-31 151521.png" alt="Debit Advice Report"></div>
+                        </div>
+                        <button class="car-btn prev" onclick="moveSlide('c1',-1)">&#8592;</button>
+                        <button class="car-btn next" onclick="moveSlide('c1', 1)">&#8594;</button>
+                        <div class="car-dots" id="d-c1">
+                            <button class="car-dot active" onclick="goSlide('c1',0)"></button>
+                            <button class="car-dot" onclick="goSlide('c1',1)"></button>
+                            <button class="car-dot" onclick="goSlide('c1',2)"></button>
+                            <button class="car-dot" onclick="goSlide('c1',3)"></button>
+                            <button class="car-dot" onclick="goSlide('c1',4)"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT 2 : SAMA REGULATORY REPORTS -->
+            <div class="project-card">
+                <div class="project-split">
+                    <div class="carousel-wrap" id="c2">
+                        <div class="carousel-track">
+                            <div class="carousel-slide"><img src="SAMA/Screenshot 2026-07-31 155029.png" alt="Monthly Outbound Remittances"></div>
+                            <div class="carousel-slide"><img src="SAMA/Screenshot 2026-07-31 155524.png" alt="Account Statement Arabic"></div>
+                            <div class="carousel-slide"><img src="SAMA/Screenshot 2026-07-31 155624.png" alt="Bank Foreign Currency Report"></div>
+                            <div class="carousel-slide"><img src="SAMA/Screenshot 2026-07-31 155942.png" alt="Account Statement V2"></div>
+                            <div class="carousel-slide"><img src="SAMA/Screenshot 2026-07-31 155236.png" alt="Technical Report on Account"></div>
+                            <div class="carousel-slide"><img src="SAMA/Screenshot 2026-07-31 155320.png" alt="Weekly Compliance Report"></div>
+                        </div>
+                        <button class="car-btn prev" onclick="moveSlide('c2',-1)">&#8592;</button>
+                        <button class="car-btn next" onclick="moveSlide('c2', 1)">&#8594;</button>
+                        <div class="car-dots" id="d-c2">
+                            <button class="car-dot active" onclick="goSlide('c2',0)"></button>
+                            <button class="car-dot" onclick="goSlide('c2',1)"></button>
+                            <button class="car-dot" onclick="goSlide('c2',2)"></button>
+                            <button class="car-dot" onclick="goSlide('c2',3)"></button>
+                            <button class="car-dot" onclick="goSlide('c2',4)"></button>
+                            <button class="car-dot" onclick="goSlide('c2',5)"></button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-title">Saudi Central Bank (SAMA) Regulatory Reports</div>
+                        <p class="project-desc">Gathered and analyzed business requirements from stakeholders through Business Requirements Documents (BRDs), then translated them into fully functional SSRS regulatory reports by writing complex SQL queries. Delivered 40+ reporting solutions for Emirates NBD's KSA entity, including 20+ reports submitted to the Saudi Central Bank (SAMA), ensuring data accuracy, regulatory compliance, and timely delivery.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">SSRS</span>
+                            <span class="project-tag">SQL</span>
+                            <span class="project-tag">SSMS</span>
+                            <span class="project-tag">Regulatory</span>
+                            <span class="project-tag">Banking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT 3 : SABIC HR ANALYTICS -->
+            <div class="project-card">
+                <div class="project-sabic-body">
+                    <div class="project-info">
+                        <div class="project-title">HR Analytics Platform &mdash; SABIC</div>
+                        <p class="project-desc">Contributed to the design and development of an enterprise Data Warehouse on SAP HANA, fetching data from SAP ERP systems, applying business transformations, and loading it into the final DWH layer. Built three interactive dashboards in SAP Analytics Cloud (SAC) covering the full HR lifecycle — from workforce analytics to operational performance. Click any dashboard below to view the full report.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">SAP HANA</span>
+                            <span class="project-tag">SAP Analytics Cloud</span>
+                            <span class="project-tag">Data Warehouse</span>
+                            <span class="project-tag">ETL</span>
+                            <span class="project-tag">Power BI</span>
+                        </div>
+                    </div>
+                    <div class="sabic-thumbs">
+                        <a href="SABIC/Hire To Retire.pdf" target="_blank" rel="noopener" class="sabic-thumb">
+                            <img src="SABIC/Hire to Retire.png" alt="Hire to Retire Dashboard">
+                            <div class="sabic-overlay">
+                                <div class="sabic-icon">📄</div>
+                                <div class="sabic-label">Hire to Retire<br>Dashboard</div>
+                            </div>
+                        </a>
+                        <a href="SABIC/HRO Performance.pdf" target="_blank" rel="noopener" class="sabic-thumb">
+                            <img src="SABIC/HRO Performance.png" alt="HRO Performance Dashboard">
+                            <div class="sabic-overlay">
+                                <div class="sabic-icon">📄</div>
+                                <div class="sabic-label">HRO Performance<br>Dashboard</div>
+                            </div>
+                        </a>
+                        <a href="SABIC/Employee Profile.pdf" target="_blank" rel="noopener" class="sabic-thumb">
+                            <img src="SABIC/Employee Profile.png" alt="Employee Profile Dashboard">
+                            <div class="sabic-overlay">
+                                <div class="sabic-icon">📄</div>
+                                <div class="sabic-label">Employee Profile<br>Dashboard</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ─── EDUCATION ─────────────────────────────────────────── -->
+<section id="education">
+    <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="section-line"></div>
+        <div class="edu-card">
+            <div class="edu-icon">🎓</div>
+            <div>
+                <div class="edu-degree">Bachelor's Degree in Engineering</div>
+                <div class="edu-sub">Zagazig University &nbsp;&middot;&nbsp; Class of 2018</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────────────────────── -->
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="section-line"></div>
+        <div class="contact-grid">
+            <a href="mailto:ebrahimtarek18@gmail.com" class="contact-card">
+                <span class="contact-ic">✉️</span>
+                <div>
+                    <span class="contact-lbl">Email</span>
+                    <span class="contact-val">ebrahimtarek18@gmail.com</span>
+                </div>
+            </a>
+            <a href="https://www.linkedin.com/in/ebrahim-tarek-7a0743143" target="_blank" rel="noopener" class="contact-card">
+                <span class="contact-ic">💼</span>
+                <div>
+                    <span class="contact-lbl">LinkedIn</span>
+                    <span class="contact-val">ebrahim-tarek-7a0743143</span>
+                </div>
+            </a>
+            <a href="https://github.com/EbrahimTarek" target="_blank" rel="noopener" class="contact-card">
+                <span class="contact-ic">🐙</span>
+                <div>
+                    <span class="contact-lbl">GitHub</span>
+                    <span class="contact-val">EbrahimTarek</span>
+                </div>
+            </a>
+            <a href="tel:+201033381074" class="contact-card">
+                <span class="contact-ic">📞</span>
+                <div>
+                    <span class="contact-lbl">Phone</span>
+                    <span class="contact-val">+20 103 338 1074</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer>
+    <p>&copy; 2025 Ebrahim Tarek Ebrahim &nbsp;&middot;&nbsp; Built with HTML &amp; CSS</p>
+</footer>
+
+<script>
+    const state = {};
+
+    function moveSlide(id, dir) {
+        if (!state[id]) state[id] = 0;
+        const wrap = document.getElementById(id);
+        const total = wrap.querySelectorAll('.carousel-slide').length;
+        state[id] = (state[id] + dir + total) % total;
+        render(id);
+    }
+
+    function goSlide(id, idx) {
+        state[id] = idx;
+        render(id);
+    }
+
+    function render(id) {
+        const wrap  = document.getElementById(id);
+        const track = wrap.querySelector('.carousel-track');
+        const dots  = document.querySelectorAll('#d-' + id + ' .car-dot');
+        track.style.transform = 'translateX(-' + (state[id] * 100) + '%)';
+        dots.forEach((d, i) => d.classList.toggle('active', i === state[id]));
+    }
+
+    // Smooth scroll with nav offset
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const t = document.querySelector(a.getAttribute('href'));
+            if (t) {
+                e.preventDefault();
+                window.scrollTo({ top: t.offsetTop - 72, behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+</body>
+</html>
