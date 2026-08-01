@@ -253,40 +253,30 @@
         }
         .car-dot.active { background: var(--accent); }
 
-        /* ── SABIC PROJECT ───────────────────────── */
-        .project-sabic-body { display: flex; flex-direction: column; }
-        .project-sabic-body .project-info { border-bottom: 1px solid var(--border); }
-        .sabic-thumbs { display: grid; grid-template-columns: repeat(3,1fr); }
-        .sabic-thumb {
-            position: relative; overflow: hidden;
-            aspect-ratio: 16/9;
-            border-right: 1px solid var(--border);
-            display: block; text-decoration: none;
-        }
-        .sabic-thumb:last-child { border-right: none; }
-        .sabic-thumb img {
-            width: 100%; height: 100%;
-            object-fit: cover; object-position: center top;
-            transition: transform .35s ease;
-        }
-        .sabic-thumb:hover img { transform: scale(1.06); }
-        .sabic-overlay {
+        /* ── SABIC CAROUSEL SLIDE OVERLAY ───────── */
+        .sabic-slide { position: relative; }
+        .sabic-slide-link {
             position: absolute; inset: 0;
             background: rgba(8,9,15,0);
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
-            transition: background .3s; padding: .5rem; text-align: center;
+            transition: background .3s;
+            text-decoration: none; gap: .45rem;
         }
-        .sabic-thumb:hover .sabic-overlay { background: rgba(8,9,15,.84); }
-        .sabic-icon, .sabic-label {
+        .sabic-slide-link:hover { background: rgba(8,9,15,.8); }
+        .sabic-slide-icon,
+        .sabic-slide-text {
             color: #fff; opacity: 0;
             transition: opacity .3s, transform .3s;
-            transform: translateY(6px);
+            transform: translateY(8px);
         }
-        .sabic-icon { font-size: 1.6rem; margin-bottom: .35rem; }
-        .sabic-label { font-size: .7rem; font-weight: 600; line-height: 1.3; }
-        .sabic-thumb:hover .sabic-icon,
-        .sabic-thumb:hover .sabic-label { opacity: 1; transform: translateY(0); }
+        .sabic-slide-icon { font-size: 1.55rem; }
+        .sabic-slide-text {
+            font-size: .8rem; font-weight: 600;
+            letter-spacing: .6px; text-transform: uppercase;
+        }
+        .sabic-slide-link:hover .sabic-slide-icon,
+        .sabic-slide-link:hover .sabic-slide-text { opacity: 1; transform: translateY(0); }
 
         /* ── CERTIFICATIONS ─────────────────────── */
         #certifications { background: var(--bg-base); }
@@ -379,9 +369,6 @@
             .hero-bio { margin: 0 auto; }
             .nav-links { display: none; }
             .project-split { grid-template-columns: 1fr; }
-            .sabic-thumbs { grid-template-columns: 1fr; }
-            .sabic-thumb { border-right: none; border-bottom: 1px solid var(--border); aspect-ratio: 16/7; }
-            .sabic-thumb:last-child { border-bottom: none; }
         }
     </style>
 </head>
@@ -433,8 +420,8 @@
                     <span class="skill-tag">Power BI</span>
                     <span class="skill-tag">SSRS</span>
                     <span class="skill-tag">SAP Analytics Cloud</span>
-                    <span class="skill-tag">SAP BusinessObjects</span>
-                    <span class="skill-tag">Excel</span>
+                    <span class="skill-tag">SAP BusinessObjects (BO)</span>
+                    <span class="skill-tag">SAP BW</span>
                 </div>
             </div>
 
@@ -442,25 +429,25 @@
                 <div class="skill-cat-label">Databases &amp; Query Engines</div>
                 <div class="skill-row">
                     <span class="skill-tag">SAP HANA</span>
+                    <span class="skill-tag">SQL</span>
                     <span class="skill-tag">SSMS</span>
                     <span class="skill-tag">Hive</span>
-					<span class="skill-tag">Oracle</span>
-					<span class="skill-tag">Trino</span>
                 </div>
             </div>
 
             <div class="skill-category">
                 <div class="skill-cat-label">ETL &amp; Data Engineering</div>
                 <div class="skill-row">
-                    <span class="skill-tag">Informatica PowerCenter & BDM</span>
+                    <span class="skill-tag">Informatica</span>
                     <span class="skill-tag">PySpark</span>
                 </div>
             </div>
 
             <div class="skill-category">
-                <div class="skill-cat-label">Programming</div>
+                <div class="skill-cat-label">Programming &amp; Tools</div>
                 <div class="skill-row">
                     <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Excel</span>
                 </div>
             </div>
 
@@ -617,37 +604,46 @@
 
             <!-- PROJECT 3 : SABIC HR ANALYTICS ──────────────── -->
             <div class="project-card">
-                <div class="project-sabic-body">
+                <div class="project-split">
                     <div class="project-info">
                         <div class="project-title">HR Analytics Platform &mdash; SABIC</div>
-                        <p class="project-desc">Contributed to the design and development of an enterprise Data Warehouse on SAP HANA, fetching data from SAP ERP systems, applying business transformations, and loading it into the final DWH layer. Built three interactive dashboards in SAP Analytics Cloud (SAC) covering the full HR lifecycle — from workforce analytics to operational performance. Click any dashboard below to view the full report.</p>
+                        <p class="project-desc">Contributed to the design and development of an enterprise Data Warehouse on SAP HANA, fetching data from SAP ERP systems, applying business transformations, and loading it into the final DWH layer. Built three interactive dashboards in SAP Analytics Cloud (SAC) covering the full HR lifecycle — from workforce analytics to operational performance. Hover over a dashboard and click <em>View Full Report</em> to open the PDF.</p>
                         <div class="project-tags">
                             <span class="project-tag">SAP HANA Database</span>
                             <span class="project-tag">SAP Analytics Cloud</span>
                         </div>
                     </div>
-                    <div class="sabic-thumbs">
-                        <a href="SABIC/Hire To Retire.pdf" target="_blank" rel="noopener" class="sabic-thumb">
-                            <img src="SABIC/Hire to Retire.png" alt="Hire to Retire Dashboard">
-                            <div class="sabic-overlay">
-                                <div class="sabic-icon">📄</div>
-                                <div class="sabic-label">Hire to Retire<br>Dashboard</div>
+                    <div class="carousel-wrap" id="c3">
+                        <div class="carousel-track">
+                            <div class="carousel-slide sabic-slide">
+                                <img src="SABIC/Hire to Retire.png" alt="Hire to Retire Dashboard">
+                                <a href="SABIC/Hire To Retire.pdf" target="_blank" rel="noopener" class="sabic-slide-link">
+                                    <span class="sabic-slide-icon">📄</span>
+                                    <span class="sabic-slide-text">View Full Report</span>
+                                </a>
                             </div>
-                        </a>
-                        <a href="SABIC/HRO Performance.pdf" target="_blank" rel="noopener" class="sabic-thumb">
-                            <img src="SABIC/HRO Performance.png" alt="HRO Performance Dashboard">
-                            <div class="sabic-overlay">
-                                <div class="sabic-icon">📄</div>
-                                <div class="sabic-label">HRO Performance<br>Dashboard</div>
+                            <div class="carousel-slide sabic-slide">
+                                <img src="SABIC/HRO Performance.png" alt="HRO Performance Dashboard">
+                                <a href="SABIC/HRO Performance.pdf" target="_blank" rel="noopener" class="sabic-slide-link">
+                                    <span class="sabic-slide-icon">📄</span>
+                                    <span class="sabic-slide-text">View Full Report</span>
+                                </a>
                             </div>
-                        </a>
-                        <a href="SABIC/Employee Profile.pdf" target="_blank" rel="noopener" class="sabic-thumb">
-                            <img src="SABIC/Employee Profile.png" alt="Employee Profile Dashboard">
-                            <div class="sabic-overlay">
-                                <div class="sabic-icon">📄</div>
-                                <div class="sabic-label">Employee Profile<br>Dashboard</div>
+                            <div class="carousel-slide sabic-slide">
+                                <img src="SABIC/Employee Profile.png" alt="Employee Profile Dashboard">
+                                <a href="SABIC/Employee Profile.pdf" target="_blank" rel="noopener" class="sabic-slide-link">
+                                    <span class="sabic-slide-icon">📄</span>
+                                    <span class="sabic-slide-text">View Full Report</span>
+                                </a>
                             </div>
-                        </a>
+                        </div>
+                        <button class="car-btn prev" onclick="moveSlide('c3',-1)">&#8592;</button>
+                        <button class="car-btn next" onclick="moveSlide('c3', 1)">&#8594;</button>
+                        <div class="car-dots" id="d-c3">
+                            <button class="car-dot active" onclick="goSlide('c3',0)"></button>
+                            <button class="car-dot" onclick="goSlide('c3',1)"></button>
+                            <button class="car-dot" onclick="goSlide('c3',2)"></button>
+                        </div>
                     </div>
                 </div>
             </div>
